@@ -1,0 +1,41 @@
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <form>
+    <p class="text-center mb-5">
+      <img src="assets/logo/login.jpg" class="" />
+    </p>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-3 col-form-label">Username</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="username" [(ngModel)]="userData.username">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
+        <input type="password" class="form-control" name="password" [(ngModel)]="userData.password">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="button" class="btn btn-primary btn-block" (click)="submitLogin()">Login </button>
+      </div>
+    </div>
+    <!-- ทำให้ส่งข้อความ html ออกมาแสดงได้ -->
+    <p [innerHTML]="message"  ></p>
+
+    <p>
+      If you not a member<br />
+      <a routerLink="/auth/register">
+        Register here.
+      </a>
+    </p>
+    <p><a routerLink="">Back To home</a></p>
+    <!-- {{ message }} -->
+    <!-- {{ person | json }} -->
+    <!-- <p><img src="assets/logo/login.jpg" /></p> -->
+    <!-- <p><img [src]="imgname2" /></p> -->
+    <!-- <hr />
+    {{ userData | json}} -->
+  </form>
+</div>
