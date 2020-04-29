@@ -10,10 +10,10 @@ import { AboutComponent } from './pages/frontend/about/about.component';
 import { HomeComponent } from './pages/frontend/home/home.component';
 import { FrontendLayoutComponent } from './layouts/frontend-layout/frontend-layout.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 
-
+import { AuthGuard } from './auth/auth.guard'
 
 const routes: Routes = [
   //Route สำหรับเรียกหน้า Frontend Layout
@@ -59,10 +59,13 @@ const routes: Routes = [
   {
     path: 'backend',
     component: BackendLayoutComponent,
+    //canActivateChild: [AuthGuard],//ตรวจสอบได้ หลาย gurad ก็สร้างเงื่อนไข
+    canActivate: [AuthGuard],
     children: [
       {
         path: "",
-        component: DashboardComponent
+        component: DashboardComponent,
+
       },
       {
         path: "stock",
@@ -71,7 +74,8 @@ const routes: Routes = [
       {
         path: "users",
         component: UsersComponent
-      }
+      },
+
     ]
   }
 ];

@@ -1,3 +1,37 @@
 <h1>Dashboard</h1>
 
-<chart [type]="typeChart" [data]="dataChart" [options]="optionsChart" style="height: 300px;"></chart>
+<div class="row">
+  <div class="col-md-6">
+    <chart [type]="typeChart1" [data]="dataChart1" [options]="optionsChart1" style="height: 400px"></chart>
+  </div>
+  <div class="col-md-6">
+    <chart [type]="typeChart" [data]="dataChart" [options]="optionsChart" style="height: 450px"></chart>
+  </div>
+</div>
+<div class="container-fluid mt-5">
+  <table class="table table-bordered table-hover">
+    <thead class="bg-primary text-center">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Detail</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of dataProduct">
+        <td>{{ item.id }}</td>
+        <td>{{item.product_name}}</td>
+        <td>{{ item.product_detail |slice:0:100}}</td>
+        <td>{{ item.product_price}}</td>
+        <td>{{ item.product_qty}}</td>
+        <td>{{ item.product_date}}</td>
+        <td>{{ item.product_status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
