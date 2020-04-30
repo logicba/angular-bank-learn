@@ -1,6 +1,8 @@
+import { ConstantService } from './../../../service/common/constant.service';
 import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core'
-//import { ProductService } from '../../../service/product.service'
+import { AuthService } from 'src/app/service/auth.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +21,16 @@ export class DashboardComponent implements OnInit {
   // สร้างตัวแปร แบบว่างเพื่อรับข้อมูล 
   dataProduct: any = []
 
-  constructor(private api: ProductService) { }
+  imgUrl: string
+
+  constructor(
+    private api: ProductService,
+    private constant: ConstantService,
+    private auth: AuthService
+  ) {
+    this.imgUrl = this.constant.baseAPIURLImage
+    console.log(this.auth.getUser())
+  }
 
   ngOnInit(): void {
 

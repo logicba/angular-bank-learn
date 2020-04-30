@@ -14,14 +14,15 @@ import { AboutComponent } from './pages/frontend/about/about.component';
 import { ContactComponent } from './pages/frontend/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-
-// Add from module
-import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/backend/dashboard/dashboard.component';
 import { StockComponent } from './pages/backend/stock/stock.component';
 import { UsersComponent } from './pages/backend/users/users.component';
 import { BackendNavbarComponent } from './shared/backend/backend-navbar/backend-navbar.component';
 import { BackendSidebarComponent } from './shared/backend/backend-sidebar/backend-sidebar.component'
+
+// Add from module
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'
 
 /// chart js
 import { ChartModule } from 'angular2-chartjs'
@@ -32,6 +33,9 @@ import { AuthGuard } from './auth/auth.guard'
 
 /// Http module เป็น โมดูลที่เอาไว้เรียก api
 import { HttpClientModule } from '@angular/common/http'
+
+// Add constant service
+import { ConstantService } from './service/common/constant.service'
 
 @NgModule({
   declarations: [
@@ -50,7 +54,7 @@ import { HttpClientModule } from '@angular/common/http'
     StockComponent,
     UsersComponent,
     BackendNavbarComponent,
-    BackendSidebarComponent
+    BackendSidebarComponent    
   ],
   imports: [
     RouterModule,
@@ -58,12 +62,13 @@ import { HttpClientModule } from '@angular/common/http'
     AppRoutingModule,
     FormsModule,
     ChartModule,
-    HttpClientModule
-
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ // พวก service กับ guard ใส่ไว้ในนี 
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ConstantService
   ],
   bootstrap: [AppComponent]
 })
